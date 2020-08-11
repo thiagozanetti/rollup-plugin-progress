@@ -1,7 +1,7 @@
 {
-  "name": "rollup-plugin-progress",
-  "version": "1.1.2",
-  "description": "Rollup Progress Plugin",
+  "name": "rollup-plugin-progressbar",
+  "version": "0.1.0",
+  "description": "Rollup Progressbar Plugin",
   "main": "dist/rollup-plugin-progress.js",
   "module": "dist/rollup-plugin-progress.esm.js",
   "scripts": {
@@ -12,22 +12,28 @@
     "rollup",
     "plugin",
     "progress",
-    "progressbar"
+    "progressbar",
+    "rollup-plugin"
   ],
   "files": [
     "dist"
   ],
-  "author": "Jan Kuri",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jkuri/rollup-plugin-progress.git"
+    "url": "git+https://github.com/thiagozanetti/rollup-plugin-progressbar.git"
   },
+  "author": "Thiago Zanetti <thiago.project@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiagozanetti/rollup-plugin-progressbar/issues"
+  },
+  "homepage": "https://github.com/thiagozanetti/rollup-plugin-progressbar#readme",
   "dependencies": {
-    "chalk": "^2.4.2"
+    "chalk": "^4.1.0",
+    "cli-progress": "^3.8.2"
   },
   "devDependencies": {
-    "rollup": "^1.6.0",
-    "rollup-plugin-buble": "^0.19.6"
+    "@rollup/plugin-buble": "^0.21.3",
+    "rollup": "^2.23.1"
   }
 }

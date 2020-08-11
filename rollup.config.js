@@ -1,13 +1,15 @@
-import buble from 'rollup-plugin-buble';
+import buble from '@rollup/plugin-buble';
 
-const external = Object.keys(require('./package.json').dependencies).concat(['fs', 'path', 'readline']);
+import pkg from './package.json';
+
+const external = Object.keys(pkg.dependencies).concat(['fs', 'path', 'crypto', 'os']);
 
 export default {
+  external,
   input: 'src/index.js',
-  plugins: [ buble() ],
-  external: external,
   output: [
-    { file: 'dist/rollup-plugin-progress.js', format: 'cjs' },
-    { file: 'dist/rollup-plugin-progress.esm.js', format: 'es' }
-  ]
+    { file: pkg.main, format: 'cjs', exports: 'default', },
+    { file: pkg.module, format: 'es', exports: 'default', },
+  ],
+  plugins: [ buble() ],
 };

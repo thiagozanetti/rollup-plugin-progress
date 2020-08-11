@@ -1,29 +1,63 @@
-## rollup-plugin-progress
+## rollup-plugin-progressbar
 
 Show current module being transpiled by the rollup bundler.
-
-<img src="https://cloud.githubusercontent.com/assets/1796022/20893960/02d1b622-bb14-11e6-8ef5-dd5282248ecb.gif">
 
 ### Installation
 
 ```sh
-npm i rollup-plugin-progress --save-dev
+npm i rollup-plugin-progressbar --save-dev
 ```
 
 ### Usage
 
 Include the following in the rollup config
 
+#### Modern mode:
+
 ```js
 import { rollup } from 'rollup';
-import progress from 'rollup-plugin-progress';
+import progressbar from 'rollup-plugin-progressbar';
 
 rollup({
   entry: 'main.js',
   plugins: [
-    progress({
-      clearLine: false // default: true
-    })
-  ]
-}).then( bundle => bundle.write({ dest: 'bundle.js', format: 'iife' }) );
+    progressbar(),
+  ],
+}).then(bundle => bundle.write({ dest: 'bundle.js', format: 'iife' }));
+```
+
+#### With custom settings:
+
+```js
+import { rollup } from 'rollup';
+import progressbar from 'rollup-plugin-progressbar';
+
+rollup({
+  entry: 'main.js',
+  plugins: [
+    progressbar({
+      modern: {
+        format: '({value}/{total}): {file} {bar} {percentage}%', // default: 'Building... {bar} {percentage}% ({value}/{total}): {file}'
+        preset: 'classic', // default: 'shades-grey'
+      }
+    }),
+  ],
+}).then(bundle => bundle.write({ dest: 'bundle.js', format: 'iife' }));
+```
+
+#### Legacy mode:
+
+```js
+import { rollup } from 'rollup';
+import progressbar from 'rollup-plugin-progressbar';
+
+rollup({
+  entry: 'main.js',
+  plugins: [
+    progressbar({
+      modern: false, // default: true
+      clearLine: false, // default: true
+    }),
+  ],
+}).then(bundle => bundle.write({ dest: 'bundle.js', format: 'iife' }));
 ```
